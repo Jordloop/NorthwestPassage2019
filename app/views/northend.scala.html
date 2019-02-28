@@ -1,18 +1,37 @@
+@(playerName : String, crewMembers : String, kittenImg : String, crew : Array[String])
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="utf-8">
-    <title>Northwest Passage</title>
-</head>
-<body>
-<h1>Too Much Ice</h1>
-<p>You should have known if it was that easy someone would have done it already.
-    Your ship is hit by an iceberg.
-    You and your crew fall into the sea and are attacked by giant coelacanths.
-    Lucky for you a passing catfish chases away the coelacanths.
-    You are all able to swim to the shore of a frozen island where you find nothing to eat but lettuce.
-    Years later you are rescued by a ship named Titanic on its way to the New World.
-    The end.
-</p>
-</body>
+    <head>
+        <meta charset="utf-8">
+        <title>Northwest Passage</title>
+    </head>
+    <body>
+        <img src=@kittenImg alt="" height="200">
+        <img src="/assets/images/northend.jpg" height="500">
+        <h1>Too Much Ice</h1>
+        <h3>You have @crewMembers crew members.</h3>
+        <p>You should have known if it was that easy someone would have done it already.
+            Your ship is hit by an iceberg.
+            You and your crew fall into the sea and are attacked by giant coelacanths.
+            Lucky for you a passing catfish chases away the coelacanths.
+            You are all able to swim to the shore of a frozen island where you find nothing to eat but lettuce.
+            Years later you are rescued by a ship named Titanic on its way to the New World.
+            The end. @playerName
+            <br>
+            @crewMembers
+        </p>
+        <h3>Living Crew Members:</h3>
+        @for(member <- crew){
+        <p>@member</p>
+        }
+        <form action="/start" method="POST">
+            @helper.CSRF.formField
+            <input type="text" name="playerName" value="@playerName" hidden required>
+            <input type="text" name="kitten" value="@kittenImg" hidden required>
+            <input type="submit" value="Play Again"/>
+        </form>
+        <form method="get" action="/">
+            <input type="submit" value="New Player">
+        </form>
+    </body>
 </html>

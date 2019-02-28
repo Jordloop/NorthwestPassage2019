@@ -1,16 +1,13 @@
-# Routes
-# This file defines all application routes (Higher priority routes first)
-# ~~~~
-
 GET     /                           controllers.GameController.getWelcome
 GET     /kittens                    controllers.GameController.getKittens
-POST    /start                      controllers.GameController.postStart
-POST    /westFromEngland            controllers.GameController.postWestFromEngland
-POST    /northEnd                   controllers.GameController.postNorthEnd
-POST    /eastFromEngland            controllers.GameController.postEastFromEngland
-POST    /eastEnd                    controllers.GameController.postEastEnd
-POST    /westEnd                    controllers.GameController.postWestEnd
-POST    /home                       controllers.GameController.postHomePort
+POST    /start                      controllers.GameController.postStart(request : Request)
+POST    /westFromEngland            controllers.GameController.postWestFromEngland(request : Request)
+POST    /northFromEngland           controllers.GameController.postNorthFromEngland(request : Request)
+POST    /eastFromEngland            controllers.GameController.postEastFromEngland(request : Request)
+POST    /westEnd                    controllers.GameController.postWestEnd(request : Request)
+POST    /northEnd                   controllers.GameController.postNorthEnd(request : Request)
+POST    /eastEnd                    controllers.GameController.postEastEnd(request : Request)
+POST    /home                       controllers.GameController.postHomePort(request : Request)
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)

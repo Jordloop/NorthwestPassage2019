@@ -1,15 +1,33 @@
+@(playerName : String, crewMembers : String, kittenImg : String, crew : Array[String])
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="utf-8">
-    <title>Northwest Passage</title>
-</head>
-<body>
-<h1>Too Much Trying to go East</h1>
-<p>You should have paid more attention to your intuition.
-    You run ashore while trying to turn around in the latest dead end bay.
-    While trying to patch up the ship you and your crew are almost eaten by a rampaging herd of feral kittens.
-    The kittens destroy what remains of your ship.  A passing Viking Cruise ship picks you up and takes you back to port in disgrace. The end.
-</p>
-</body>
+    <head>
+        <meta charset="utf-8">
+        <title>Northwest Passage</title>
+    </head>
+    <body>
+        <img src=@kittenImg alt="" height="200">
+        <input type="submit" value="New Player">
+        <img src="/assets/images/eastend.jpg" height="500">
+        <h1>Too Much Trying to go East</h1>
+        <h3>You have @crewMembers crew members.</h3>
+        <p>You should have paid more attention to your intuition.
+            You run ashore while trying to turn around in the latest dead end bay.
+            While trying to patch up the ship you and your crew are almost eaten by a rampaging herd of feral kittens.
+            The kittens destroy what remains of your ship. A passing Viking Cruise ship picks you up and takes you back
+            to port in disgrace. The end. @playerName
+        </p>
+        <h3>Living Crew Members:</h3>
+        @for(member <- crew){
+        <p>@member</p>
+        }
+        <form action="/start" method="POST">
+            @helper.CSRF.formField
+            <input type="text" name="playerName" value="@playerName" hidden required>
+            <input type="text" name="kitten" value="@kittenImg" hidden required>
+            <input type="submit" value="Play Again"/>
+        </form>
+        <form method="get" action="/">
+        </form>
+    </body>
 </html>

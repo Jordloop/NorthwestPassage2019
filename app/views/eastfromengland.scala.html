@@ -1,22 +1,33 @@
+@(crewMembers : String, deadCrewman : String, kittenImg : String, crew : Array[String])
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="utf-8">
-    <title>Northwest Passage</title>
-</head>
-<body>
-<h1>Too Much Land</h1>
-<p>This way is not looking very promising.
-    You keep going in and out of bays trying to find a way east but you always run into land.
-    You are afraid you may run aground and be eaten by one of the roving bands of feral kittens you see frolicking upon the shore.
-</p>
-<form action="/home" method="POST">
-    @helper.CSRF.formField
-    <input type="submit" value="Sail back West"/>
-</form>
-<form action="/eastEnd" method="POST">
-    @helper.CSRF.formField
-    <input type="submit" value="Keep trying to sail East"/>
-</form>
-</body>
+    <head>
+        <meta charset="utf-8">
+        <title>Northwest Passage</title>
+    </head>
+    <body>
+        <img src=@kittenImg alt="" height="200">
+        <img src="/assets/images/eastofengland.jpg" height="500">
+        <h1>Too Much Land</h1>
+        <h3>@deadCrewman has died. You now have @crewMembers crew members.</h3>
+        <p>
+            This way is not looking very promising.
+            You keep going in and out of bays trying to find a way east but you always run into land.
+            You are afraid you may run aground and be eaten by one of the roving bands of feral kittens you see
+            frolicking upon the shore.
+        </p>
+        <h3>Living Crew Members:</h3>
+        @for(member <- crew){
+        <p>@member</p>
+        }
+
+        <form action="/home" method="POST">
+            @helper.CSRF.formField
+            <input type="submit" value="Sail back West"/>
+        </form>
+        <form action="/eastEnd" method="POST">
+            @helper.CSRF.formField
+            <input type="submit" value="Keep trying to sail East"/>
+        </form>
+    </body>
 </html>

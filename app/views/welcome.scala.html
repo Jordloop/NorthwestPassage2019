@@ -1,21 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="utf-8">
-    <title>Northwest Passage</title>
-</head>
-<body>
-<h1>Northwest Passage</h1>
-<h2>A Game of Cunning and Skill</h2>
-<p>
-    This game is meant to be played by only the most skilled gamers.  Play at your own risk!
-</p>
-<form action="/start" method="POST">
-    @helper.CSRF.formField
-    <input type="submit" value="Let's Do This!"/>
-</form>
-<form action="/kittens" method="GET">
-    <input type="submit" value="Kittens"/>
-</form>
-</body>
+    <head>
+        <meta charset="utf-8">
+        <title>Northwest Passage</title>
+    </head>
+    <body>
+        <img src="/assets/images/welcome.jpg">
+        <h1>Northwest Passage</h1>
+        <h2>A Game of Cunning and Skill</h2>
+        <p>
+            This game is meant to be played by only the most skilled gamers. Play at your own risk!
+        </p>
+
+        <form action="/start" method="POST">
+            @helper.CSRF.formField
+            <label for="playerName">What's Your Name?</label>
+            <input type="text" name="playerName" id="playerName" required>
+            <br><br>
+            <label>Who are you?</label>
+            <br>
+            <input type="radio" name="kitten" value="/assets/images/fluffy.jpg" checked><img src="/assets/images/fluffy.jpg" height="100px">
+            <input type="radio" name="kitten" value="/assets/images/whitey.jpg"><img src="/assets/images/whitey.jpg" height="100px"><br>
+            <input type="radio" name="kitten" value="/assets/images/agro.jpg"><img src="/assets/images/agro.jpg" height="100px">
+            <input type="radio" name="kitten" value="/assets/images/fold.jpg"><img src="/assets/images/fold.jpg" height="100px"><br>
+
+            <input type="submit" value="Let's Do This!"/>
+        </form>
+        <form action="/kittens" method="GET">
+            <input type="submit" value="Kittens"/>
+        </form>
+    </body>
 </html>

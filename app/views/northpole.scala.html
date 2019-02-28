@@ -1,21 +1,15 @@
 @(playerName : String, crewMembers : String, kittenImg : String, crew : Array[String])
-
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta charset="utf-8">
+        <meta charset="UTF-8">
         <title>Northwest Passage</title>
     </head>
     <body>
         <img src=@kittenImg alt="" height="200">
-        <img src="/assets/images/westend.jpg" height="500">
-        <h1>Winning Like Someone who Wins a Lot</h1>
+        <img src="/assets/images/northpole.png" height="500">
+        <h1>You found Santa!</h1>
         <h3>You have @crewMembers crew members.</h3>
-        <p>You reach China and load up on fidget spinners.
-            When you get back to England the Queen rewards you with a monopoly on importing them.
-            You spin happily ever after.
-            The end. @playerName
-        </p>
         <h3>Living Crew Members:</h3>
         @for(member <- crew){
         <p>@member</p>
@@ -25,9 +19,6 @@
             <input type="text" name="playerName" value="@playerName" hidden required>
             <input type="text" name="kitten" value="@kittenImg" hidden required>
             <input type="submit" value="Play Again"/>
-        </form>
-        <form method="get" action="/">
-            <input type="submit" value="New Player">
         </form>
     </body>
 </html>

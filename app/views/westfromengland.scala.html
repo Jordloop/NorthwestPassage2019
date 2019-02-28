@@ -1,27 +1,36 @@
+@(crewMembers : String, kittenImg : String, crew : Array[String])
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="utf-8">
-    <title>Northwest Passage</title>
-</head>
-<body>
-<h1>Icebergs Everywhere</h1>
-<p>You sail for months and see a lot of icebergs.
-    Food is running out and the crew is starting to get scurvy.
-    A small building resembling an outhouse appears on the deck of your ship.
-    A door opens and out comes a man wearing a large scarf.
-    He says something about being the doctor and hands you a large bottle of pills that says Flintstones on it.
-    He tells you to take these to cure your scurvy.  He goes back into the little building and it disappears.
-    The crew takes the pills and are healed the next day.
-    You feel better now and think you see a clear path through the iceburgs.
-</p>
-<form action="@routes.GameController.postHomePort" method="POST">
-    @helper.CSRF.formField
-    <input type="submit" value="Cowardly sail back to England"/>
-</form>
-<form action="@routes.GameController.postWestEnd" method="POST">
-    @helper.CSRF.formField
-    <input type="submit" value="Bravely sail west into the unknown"/>
-</form>
-</body>
+    <head>
+        <meta charset="utf-8">
+        <title>Northwest Passage</title>
+    </head>
+    <body>
+        <img src=@kittenImg alt="" height="200">
+        <img src="/assets/images/westfromengland.jpg" height="500">
+        <h1>Icebergs Everywhere</h1>
+        <h3>You have @crewMembers crew members.</h3>
+        <p>
+            You sail for months and see a lot of icebergs.
+            Food is running out and the crew is starting to get scurvy.
+            A small building resembling an outhouse appears on the deck of your ship.
+            A door opens and out comes a man wearing a large scarf.
+            He says something about being the doctor and hands you a large bottle of pills that says Flintstones on it.
+            He tells you to take these to cure your scurvy. He goes back into the little building and it disappears.
+            The crew takes the pills and are healed the next day.
+            You feel better now and think you see a clear path through the iceburgs.
+        </p>
+        <h3>Living Crew Members:</h3>
+        @for(member <- crew){
+        <p>@member</p>
+        }
+        <form action="@routes.GameController.postHomePort" method="POST">
+            @helper.CSRF.formField
+            <input type="submit" value="Cowardly sail back to England"/>
+        </form>
+        <form action="@routes.GameController.postWestEnd" method="POST">
+            @helper.CSRF.formField
+            <input type="submit" value="Bravely sail west into the unknown"/>
+        </form>
+    </body>
 </html>

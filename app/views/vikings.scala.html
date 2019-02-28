@@ -1,20 +1,17 @@
 @(playerName : String, crewMembers : String, kittenImg : String, crew : Array[String])
-
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta charset="utf-8">
-        <title>Northwest Passage</title>
+        <meta charset="UTF-8">
+        <title>Title</title>
     </head>
     <body>
         <img src=@kittenImg alt="" height="200">
-        <img src="/assets/images/westend.jpg" height="500">
-        <h1>Winning Like Someone who Wins a Lot</h1>
+        <img src="/assets/images/vikings.jpg" alt="" height="500">
+        <h1>North of England</h1>
         <h3>You have @crewMembers crew members.</h3>
-        <p>You reach China and load up on fidget spinners.
-            When you get back to England the Queen rewards you with a monopoly on importing them.
-            You spin happily ever after.
-            The end. @playerName
+        <p>
+            You battle some vikings and everybody dies.
         </p>
         <h3>Living Crew Members:</h3>
         @for(member <- crew){

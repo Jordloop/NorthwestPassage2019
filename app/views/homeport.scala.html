@@ -1,25 +1,33 @@
+@(playerName : String, crewMembers : String, kittenImg : String, crew : Array[String])
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="utf-8">
-    <title>Northwest Passage</title>
-</head>
-<body>
-<h1>Shame</h1>
-<p>You are back at home port with nothing to show for it.
-    Better get going before someone notices.
-</p>
-<form action="/westFromEngland" method="POST">
-    @helper.CSRF.formField
-    <input type="submit" value="Sail West"/>
-</form>
-<form action="/northEnd" method="POST">
-    @helper.CSRF.formField
-    <input type="submit" value="Sail North"/>
-</form>
-<form action="/eastFromEngland" method="POST">
-    @helper.CSRF.formField
-    <input type="submit" value="Sail East"/>
-</form>
-</body>
+    <head>
+        <meta charset="utf-8">
+        <title>Northwest Passage</title>
+    </head>
+    <body>
+        <img src=@kittenImg alt="" height="200">
+        <img src="/assets/images/home.png" height="500">
+        <h1>Shame, @playerName</h1>
+        <h3>You have @crewMembers crew members.</h3>
+        <p>You are back at home port with nothing to show for it.
+            Better get going before someone notices.
+        </p>
+        <h3>Living Crew Members:</h3>
+        @for(member <- crew){
+        <p>@member</p>
+        }
+        <form action="/westFromEngland" method="POST">
+            @helper.CSRF.formField
+            <input type="submit" value="Sail West"/>
+        </form>
+        <form action="/northFromEngland" method="POST">
+            @helper.CSRF.formField
+            <input type="submit" value="Sail North"/>
+        </form>
+        <form action="/eastFromEngland" method="POST">
+            @helper.CSRF.formField
+            <input type="submit" value="Sail East"/>
+        </form>
+    </body>
 </html>

@@ -1,0 +1,18 @@
+@(playerName : String, crewMembers : String, kittenImg : String, crew : Array[String])
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Northwest Passage</title>
+    </head>
+    <body>
+        <img src=@kittenImg alt="" height="200">
+        <img src="/assets/images/dungeon.jpg" height="500">
+        <h1>The Fidget Spinners Are Covered In Lead Paint!</h1>
+        <p>The Queen is pissed. To the dungeons with you!</p>
+        <h3>Living Crew Members:</h3>
+        @for(member <- crew){
+        <p>@member</p>
+        }
+    </body>
+</html>

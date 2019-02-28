@@ -1,0 +1,29 @@
+@(crewMembers : String, kittenImg : String, crew : Array[String])
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Northwest Passage</title>
+    </head>
+    <body>
+        <img src=@kittenImg alt="" height="200">
+        <img src="/assets/images/northofengland.jpg" height="500">
+        <h1>North of England</h1>
+        <h3>You have @crewMembers crew members.</h3>
+        <p>
+            You go north of England.
+        </p>
+        <h3>Living Crew Members:</h3>
+        @for(member <- crew){
+        <p>@member</p>
+        }
+        <form action="/home" method="POST">
+            @helper.CSRF.formField
+            <input type="submit" value="Sail back South"/>
+        </form>
+        <form action="/northEnd" method="POST">
+            @helper.CSRF.formField
+            <input type="submit" value="Keep trying to sail North"/>
+        </form>
+    </body>
+</html>

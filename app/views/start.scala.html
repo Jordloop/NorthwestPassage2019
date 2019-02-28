@@ -1,27 +1,39 @@
+@(playerName : String, crewMembers : String, kittenImg : String, crew : Array[String])
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="utf-8">
-    <title>Northwest Passage</title>
-</head>
-<body>
-<h1>Let the adventure begin</h1>
-<p>You have been chosen by the Queen of England to find a northern water way to China to acquire much needed fidget spinners.
-    You are given a small ship with a crew of 10 people.
-    Most of your sailor friends believe that your best chance of success is to sail northwest above North America.
-    However, some of your crew believe you should try going east over Russia or north over the top of the world instead.
-</p>
-<form action="/westFromEngland" method="POST">
-    @helper.CSRF.formField
-    <input type="submit" value="Sail West"/>
-</form>
-<form action="/northEnd" method="POST">
-    @helper.CSRF.formField
-    <input type="submit" value="Sail North"/>
-</form>
-<form action="/eastFromEngland" method="POST">
-    @helper.CSRF.formField
-    <input type="submit" value="Sail East"/>
-</form>
-</body>
+    <head>
+        <meta charset="utf-8">
+        <title>Northwest Passage</title>
+    </head>
+    <body>
+        <img src=@kittenImg alt="" height="200">
+        <img src="/assets/images/start.jpg" height="500">
+        <h1>Let the adventure begin, @playerName</h1>
+        <h3>You have @crewMembers crew members.</h3>
+        <p>You have been chosen by the Queen of England to find a northern water way to China to acquire much needed
+            fidget spinners.
+            You are given a small ship with a crew of 10 people.
+            Most of your sailor friends believe that your best chance of success is to sail northwest above North
+            America.
+            However, some of your crew believe you should try going east over Russia or north over the top of the world
+            instead.
+        </p>
+        <h3>Living Crew Members:</h3>
+        @for(member <- crew){
+        <p>@member</p>
+        }
+
+        <form action="/westFromEngland" method="POST">
+            @helper.CSRF.formField
+            <input type="submit" value="Sail West"/>
+        </form>
+        <form action="/northFromEngland" method="POST">
+            @helper.CSRF.formField
+            <input type="submit" value="Sail North"/>
+        </form>
+        <form action="/eastFromEngland" method="POST">
+            @helper.CSRF.formField
+            <input type="submit" value="Sail East"/>
+        </form>
+    </body>
 </html>
